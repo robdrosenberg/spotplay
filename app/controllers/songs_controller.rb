@@ -6,8 +6,7 @@ class SongsController < ApplicationController
       RSpotify.authenticate(ENV["CLIENT_ID"], ENV["SECRET_ID"])
 
       artist = RSpotify::Artist.search(search_term)
-      artist = artist.first
-      puts artist.albums.first.name
+      @artist = artist.first
     end
   end
 end

@@ -4,5 +4,14 @@
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
+<h1>
+  <%= @artist.name %>
+</h1>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<% @artist.albums.uniq.each do |album| %>
+  <h3> <%= album.name %> </h3>
+  <% album.tracks.each do |track| %>
+    <p> <%= track.name%> </p>
+  <% end %>
+  <hr>
+<% end %>
