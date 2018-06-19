@@ -7,6 +7,14 @@ class SongsController < ApplicationController
 
       artist = RSpotify::Artist.search(search_term)
       @artist = artist.first
+      all_tracks = []
+      @artist.albums.each do |album|
+        album.tracks.each do |track|
+          all_tracks << track
+        end
+      end
+      @random_tracks = all_tracks.sample 15
+      # binding.pry
     end
   end
 end
