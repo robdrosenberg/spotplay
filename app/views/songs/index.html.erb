@@ -4,20 +4,16 @@
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+
 <h1>
-  <%= @artist.name %>
+  <%= @artist.name if @artist %>
 </h1>
 
-<% @random_tracks.each do |track| %>
+<% if @random_tracks %>
+  <% @random_tracks.each do |track| %>
 
-  <p><%= image_tag(track.album.images[2]["url"]) %> <%= track.name%></p>
-<% end %>
-
-<!--<% @artist.albums.uniq.each do |album| %>
-  <h3> <%= album.name %> </h3>
-  <% album.tracks.each do |track| %>
-    <p> <%= track.name%> </p>
+    <p><%= image_tag(track.album.images[2]["url"]) %> <%= track.name%></p>
   <% end %>
-  <hr>
 <% end %>
--->
